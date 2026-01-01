@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Adenom Stories</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        background: #f7f5f0;
+        color: #222;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .site-header {
+        background: #111;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 16px 32px;
+    }
+
+    .header-container {
+        max-width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        line-height: 1;
+    }
+
+    .logo-image {
+        max-width: 100px;
+        height: auto;
+        margin-right: 16px;
+    }
+
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo-main {
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: normal;
+        text-transform: uppercase;
+        width: 140px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo-sub {
+        font-size: 0.75rem;
+        margin-top: 6px;
+        letter-spacing: normal;
+        text-transform: uppercase;
+        width: 140px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 24px;
+        font-weight: 500;
+        font-size: 0.95rem;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .main-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: white;
+        transition: width 0.2s ease;
+    }
+
+    .main-nav a:hover::after {
+        width: 100%;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 60px 20px;
+    }
+
+    .contact-content {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        border: 1px solid #e3e0da;
+    }
+
+    .contact-content h1 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+    }
+
+    .note {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        border-left: 4px solid #111;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .contact-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 1rem;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .contact-form textarea {
+        resize: vertical;
+        min-height: 200px;
+    }
+
+    .contact-form button {
+        padding: 12px 24px;
+        background: #111;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .contact-form button:hover {
+        background: #333;
+    }
+
+    .contact-form button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    .success-message {
+        background: #d4edda;
+        color: #155724;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        border: 1px solid #c3e6cb;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 10px 20px;
+        background: #111;
+        color: white;
+        text-decoration: none;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+        background: #333;
+    }
+
+    footer {
+        text-align: center;
+        padding: 16px;
+        background: #f1eee8;
+        border-top: 1px solid #ddd6cc;
+        font-size: 0.8rem;
+    }
+</style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+
+        <a href="Adenomstories.html" style="text-decoration: none; color: inherit;">
+        <div class="logo">
+            <img src="3.png" alt="Adenom Stories Logo" class="logo-image">
+            <div class="logo-text">
+                <div class="logo-main"><span>A</span><span>d</span><span>e</span><span>n</span><span>o</span><span>m</span></div>
+                <div class="logo-sub"><span>S</span><span>t</span><span>o</span><span>r</span><span>i</span><span>e</span><span>s</span></div>
+            </div>
+        </div>
+        </a>
+
+        <nav class="main-nav">
+            <a href="Adenomstories.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        </div>
+    </header>
+
+    <main>
+    <div class="container">
+
+        <div class="contact-content">
+            <h1>Submit Your Story</h1>
+
+            <div class="note">
+                <p><strong>Important Note:</strong> Stories submitted here may or may not be published based on editorial criteria. If your story is selected for publication, it will be posted anonymously with my own analysis and commentary. Your email address will only be used for communication regarding your submission and will not be shared or displayed. My identity and contact information remain private to maintain the integrity of this anonymous storytelling platform.</p>
+            </div>
+
+            <form class="contact-form" action="https://formsubmit.co/el/yourGeneratedID" method="POST">
+                <label for="email">Your Email Address:</label>
+                <input type="email" name="email" required placeholder="Enter your email address">
+
+                <label for="story">Your Story:</label>
+                <textarea name="story" required placeholder="Write your story here..."></textarea>
+
+                <button type="submit">Submit Story</button>
+                <input type="hidden" name="_subject" value="New Story Submission - Adenom Stories">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="thankyou.html">
+            </form>
+        </div>
+
+        <a class="back-link" href="Adenomstories.html">← Back to Home</a>
+    </div>
+    </main>
+    <footer>&copy; 2025 Adenom Stories. All rights reserved.
+    </footer>
+
+
+</body>
+</html>
