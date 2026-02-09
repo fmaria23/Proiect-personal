@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maria Ferdean</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #FDF8F3;
+        color: #333;
+        font-family: Georgia, serif;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.6;
+        letter-spacing: 0.1px;
+        overflow-x: hidden;
+    }
+
+    .site-header {
+        background: #6B2D5C;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 20px 32px;
+        box-shadow: 0 2px 10px rgba(107, 45, 92, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .site-header.scrolled {
+        padding: 15px 32px;
+        box-shadow: 0 4px 20px rgba(107, 45, 92, 0.25);
+    }
+
+    .header-container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        line-height: 1;
+    }
+
+    .logo-text {
+        font-size: 1.7rem;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        color: white;
+        text-decoration: none;
+        font-family: "Playfair Display", Georgia, serif;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .logo-text:hover {
+        color: #FDF8F3;
+        transform: translateY(-1px);
+    }
+
+    .main-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 28px;
+        font-weight: 400;
+        font-size: 0.9rem;
+        cursor: pointer;
+        position: relative;
+        font-family: "Playfair Display", Georgia, serif;
+        letter-spacing: 0.4px;
+        transition: color 0.3s ease;
+    }
+
+    .main-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: #FDF8F3;
+        transition: width 0.3s ease;
+    }
+
+    .main-nav a:hover::after {
+        width: 100%;
+    }
+
+    .main-nav a:hover {
+        color: #FDF8F3;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #6B2D5C 0%, #8B3D7C 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0.95;
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-btn {
+        padding: 15px 35px;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+        border: 2px solid white;
+    }
+
+    .hero-btn.primary {
+        background: white;
+        color: #6B2D5C;
+    }
+
+    .hero-btn.primary:hover {
+        background: #FDF8F3;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .hero-btn.secondary {
+        background: transparent;
+        color: white;
+    }
+
+    .hero-btn.secondary:hover {
+        background: rgba(255,255,255,0.1);
+        transform: translateY(-3px);
+    }
+
+    /* Section Styles */
+    .section {
+        padding: 100px 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 700;
+        color: #6B2D5C;
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        letter-spacing: 1px;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: #6B2D5C;
+    }
+
+    /* About Section */
+    .about-grid {
+        display: block;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .about-content {
+        overflow: hidden;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .about-content h3 {
+        font-size: 2rem;
+        font-family: "Playfair Display", Georgia, serif;
+        color: #6B2D5C;
+        margin-bottom: 20px;
+    }
+
+    .about-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .skill-card {
+        background: white;
+        padding: 18px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(107, 45, 92, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #E8E4DC;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(107, 45, 92, 0.2);
+    }
+
+    .skill-card h4 {
+        font-size: 1rem;
+        font-family: "Playfair Display", Georgia, serif;
+        color: #6B2D5C;
+        margin-bottom: 12px;
+    }
+
+    .skill-bar {
+        display: flex;
+        gap: 5px;
+        margin-top: 8px;
+    }
+
+    .skill-level {
+        flex: 1;
+        height: 8px;
+        background: #E8E4DC;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .skill-level.active {
+        background: linear-gradient(90deg, #6B2D5C, #8B3D7C);
+    }
+
+    .skill-card:hover .skill-level.active {
+        transform: scaleY(1.2);
+    }
+
+    /* Timeline Section */
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(180deg, #6B2D5C, #8B3D7C);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 50px;
+        padding: 0 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+    }
+
+    .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .timeline-item:nth-child(odd) {
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+        text-align: left;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background: #6B2D5C;
+        border-radius: 50%;
+        border: 4px solid #FDF8F3;
+        box-shadow: 0 0 0 4px #6B2D5C;
+    }
+
+    .timeline-content {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(107, 45, 92, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #E8E4DC;
+    }
+
+    .timeline-content:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 40px rgba(107, 45, 92, 0.15);
+    }
+
+    .timeline-content h4 {
+        font-size: 1.4rem;
+        font-family: "Playfair Display", Georgia, serif;
+        color: #6B2D5C;
+        margin-bottom: 10px;
+    }
+
+    .timeline-content .date {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        font-style: italic;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .project-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(107, 45, 92, 0.1);
+        transition: all 0.4s ease;
+        border: 1px solid #E8E4DC;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .project-card:hover::before {
+        left: 100%;
+    }
+
+    .project-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(107, 45, 92, 0.2);
+    }
+
+    .project-image {
+        height: 200px;
+        background: linear-gradient(135deg, #6B2D5C, #8B3D7C);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+        font-family: "Playfair Display", Georgia, serif;
+    }
+
+    .project-content {
+        padding: 30px;
+    }
+
+    .project-content h4 {
+        font-size: 1.5rem;
+        font-family: "Playfair Display", Georgia, serif;
+        color: #6B2D5C;
+        margin-bottom: 15px;
+    }
+
+    .project-content p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .project-tag {
+        background: #FDF8F3;
+        color: #6B2D5C;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-family: "Playfair Display", Georgia, serif;
+        border: 1px solid #E8E4DC;
+    }
+
+    .project-link {
+        display: inline-block;
+        padding: 10px 25px;
+        background: #6B2D5C;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+        background: #8B3D7C;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(107, 45, 92, 0.3);
+    }
+
+    /* Contact Section */
+    .contact-container {
+        max-width: 600px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .contact-card {
+        background: white;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(107, 45, 92, 0.15);
+        border: 1px solid #E8E4DC;
+    }
+
+    .contact-card h3 {
+        font-size: 2rem;
+        font-family: "Playfair Display", Georgia, serif;
+        color: #6B2D5C;
+        margin-bottom: 20px;
+    }
+
+    .contact-card p {
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #6B2D5C, #8B3D7C);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(107, 45, 92, 0.3);
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(107, 45, 92, 0.4);
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: #6B2D5C;
+        color: white;
+        font-size: 0.9rem;
+        font-family: "Playfair Display", Georgia, serif;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .timeline::before {
+            left: 20px;
+        }
+
+        .timeline-item {
+            padding-left: 50px;
+            padding-right: 0;
+            text-align: left !important;
+        }
+
+        .timeline-dot {
+            left: 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+
+        <a href="MariaFerdean.html" class="logo-text">Maria Ferdean</a>
+
+        <nav class="main-nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Maria Ferdean</h1>
+                <p>Welcome to my digital space where I share my journey, thoughts, and projects. Explore, connect, and discover more about who I am and what I create.</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="hero-btn primary">Discover More</a>
+                    <a href="Contact.html" class="hero-btn secondary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Hello, I'm Maria</h3>
+                    <p>I am a creative person, but also very detail-oriented. This is why I chose to work in digital marketing, as it is a very dynamic field: in some areas creativity plays a major role, while in others data analysis is essential in order to make informed decisions. I enjoy continuous learning and constantly improving my skills, and I see challenges as real opportunities for professional growth.</p>
+                    <p>I create short-form videos and social media content, photograph and film various events such as conferences, fashion galas, and festivals, design flyers for social media advertising, and develop marketing and branding strategies for early-stage businesses. I manage and analyze the performance of social media accounts and websites, and I create ad campaigns that help increase brand visibility. Both my past and current experiences help me organize and structure my time and tasks more efficiently.</p>
+                    <p>Since I studied photo and video at the University of Art and Design in Cluj, I have a strong background in visual and creative work. During high school, and more extensively during university, I developed and strengthened my skills using platforms that I still use today for both professional and personal purposes, such as the Adobe Creative Suite, Blender, HTML, Figma, and Microsoft Office.</p>
+                    <p>I have completed various courses to improve specific skills and to learn new ones. These courses helped me better understand social media marketing, email marketing, web design, SEO, Google Ads, HTML, and JavaScript. I work comfortably with tools such as WordPress, Canva, and CapCut.</p>
+                    <p>I consider myself a responsible, organized, communicative, and adaptable person. I feel comfortable in both creative and operational roles, and I work well both in a team and independently.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Adobe Lightroom</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Adobe Photoshop</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Adobe Premiere Pro</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Adobe After Effects</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Adobe Illustrator</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>HTML + CSS</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>JavaScript</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>WordPress</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>SEO</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Copywriting</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Google Ads</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Social Media Marketing</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Microsoft Word</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Microsoft PowerPoint</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Microsoft Excel</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Microsoft Power BI</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Management & Leadership</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Communication & Interpersonal</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4>Organisation Skills</h4>
+                    <div class="skill-bar">
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level active"></div>
+                        <div class="skill-level"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience">
+            <h2 class="section-title">My Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Freelance Marketing Specialist</h4>
+                        <div class="date">February 2024 - Present</div>
+                        <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8; text-align: left;">
+                            <li>Creating short videos and engaging posts for various social media platforms</li>
+                            <li>Photography and videography at events such as conferences, fashion galas, and festivals</li>
+                            <li>Developing and implementing marketing and branding strategies for early-stage businesses</li>
+                            <li>Managing and analyzing data from social media accounts and websites</li>
+                            <li>Creating and producing targeted advertisements for social media campaigns</li>
+                            <li>Running Google Ads campaigns to increase brand awareness</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Executive Assistant</h4>
+                        <div class="date">AVstore • February 2025 - Present</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Digital Skills Course</h4>
+                        <div class="date">eJobs Digital School • October 2025 – January 2026</div>
+                        <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8; text-align: left;">
+                            <li>Improved skills and knowledge in digital design platforms</li>
+                            <li>Deepened understanding of web front-end development with focus on HTML</li>
+                            <li>Began exploring and learning JavaScript to expand technical foundation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>UI/UX Design Course</h4>
+                        <div class="date">Udemy • April 2025</div>
+                        <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8; text-align: left;">
+                            <li>Learned and applied UI/UX design principles using PenPot</li>
+                            <li>Created wireframes, interactive prototypes, and layouts for web and mobile</li>
+                            <li>Focused on the effective use of colors, typography, and iconography</li>
+                            <li>Collaborated in real-time with design and development teams</li>
+                            <li>Developed user-centered design flows, from concept to prototype</li>
+                            <li>Improved creative thinking and attention to detail in UI/UX projects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Digital Marketing Course</h4>
+                        <div class="date">Udemy • January 2025</div>
+                        <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8; text-align: left;">
+                            <li>Solid knowledge of SEO techniques to increase website visibility</li>
+                            <li>Experience with online advertising through Google Ads and Facebook Ads</li>
+                            <li>Skills in social media marketing: Instagram, Facebook, YouTube, Pinterest, and LinkedIn</li>
+                            <li>Created and managed content marketing and email campaigns</li>
+                            <li>Used analytics tools to monitor and optimize marketing performance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Web Design Course</h4>
+                        <div class="date">AJOFM • October 2024 - December 2024</div>
+                        <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8; text-align: left;">
+                            <li>Built and managed a professional photography portfolio on WordPress</li>
+                            <li>Became proficient in using WordPress, Microsoft Office Suite, and Canva</li>
+                            <li>Gained experience in digital marketing and promoting artistic work on social media</li>
+                            <li>Applied design principles to create engaging content and presentations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Manager</h4>
+                        <div class="date">Inditex • September 2019 - September 2024</div>
+                        <ul style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8; text-align: left;">
+                            <li>Managed departmental documentation and optimized administrative workflows</li>
+                            <li>Ensured efficient execution of internal procedures</li>
+                            <li>Coordinated team meetings and prepared reports for management in Bucharest</li>
+                            <li>Organized team schedules and leave records for optimal time management</li>
+                            <li>Maintained stock and equipment, ensuring full store supply</li>
+                            <li>Created presentations and training materials, onboarding new employees</li>
+                            <li>Managed internal communication in Romanian and English</li>
+                            <li>Acted as intermediary between local teams and headquarters in Barcelona</li>
+                            <li>Used Microsoft Office (with emphasis on Excel) for inventory control and data monitoring</li>
+                            <li>Collaborated on international projects through Microsoft Teams</li>
+                            <li>Applied basic knowledge of Power BI for data visualization and reporting</li>
+                        </ul>
+                    </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <div class="project-image">🏃</div>
+                    <div class="project-content">
+                        <h4>Runners Club</h4>
+                        <p>Collaborating with a local sports organization to document various sporting events through photography and videography.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Photography</span>
+                            <span class="project-tag">Videography</span>
+                            <span class="project-tag">Sports</span>
+                        </div>
+                        <a href="RunnersClub.html" class="project-link">Read More</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-content">
+                        <h4>Advertisement Poster</h4>
+                        <p>A collaboration with a marketing agency creating engaging social media advertisements for Instagram and Facebook.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Social Media</span>
+                            <span class="project-tag">Marketing</span>
+                            <span class="project-tag">Design</span>
+                        </div>
+                        <a href="AdvertisementPoster.html" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">💪</div>
+                    <div class="project-content">
+                        <h4>Rucs Personal Trainer</h4>
+                        <p>A long-term collaboration with a fitness trainer documenting her journey and promoting her wellness brand.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Photography</span>
+                            <span class="project-tag">Fitness</span>
+                            <span class="project-tag">Social Media</span>
+                        </div>
+                        <a href="RucsPersonalTrainer.html" class="project-link">View Project</a>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-image">🪁</div>
+                    <div class="project-content">
+                        <h4>Kite Cowork</h4>
+                        <p>A collaboration creating engaging social media content for a modern coworking space in Cluj-Napoca.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Social Media</span>
+                            <span class="project-tag">Video</span>
+                            <span class="project-tag">Content</span>
+                        </div>
+                        <a href="KiteCowork.html" class="project-link">View Project</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="contact-container">
+                <div class="contact-card">
+                    <h3>Let's Connect</h3>
+                    <p>I'd love to hear from you! Whether you have a question, want to collaborate, or just want to say hello, feel free to reach out.</p>
+                    <a href="Contact.html" class="contact-btn">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Maria Ferdean. Crafted with passion and creativity.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animate timeline items on scroll
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Pen-like cursor trail effect
+        const canvas = document.createElement('canvas');
+        canvas.id = 'cursor-trail-canvas';
+        canvas.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; mix-blend-mode: difference;';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxPoints = 30; // Approximately 10cm trail (30 points)
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            points.push({ x: mouseX, y: mouseY, time: Date.now() });
+
+            // Keep only recent points (approximately 500ms trail for smooth effect)
+            const now = Date.now();
+            points = points.filter(p => now - p.time < 500);
+
+            // Limit number of points
+            if (points.length > maxPoints) {
+                points = points.slice(-maxPoints);
+            }
+        });
+
+        function getContrastColor(x, y) {
+            // Get the background color at the current position
+            const elements = document.elementsFromPoint(x, y);
+
+            for (const element of elements) {
+                const style = window.getComputedStyle(element);
+                const bgColor = style.backgroundColor;
+
+                // Parse RGB values
+                const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+                if (match) {
+                    const r = parseInt(match[1]);
+                    const g = parseInt(match[2]);
+                    const b = parseInt(match[3]);
+
+                    // Calculate brightness
+                    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+                    // Return white for dark backgrounds, black for light backgrounds
+                    return brightness < 128 ? '#FFFFFF' : '#6B2D5C';
+                }
+            }
+
+            // Default to burgundy
+            return '#6B2D5C';
+        }
+
+        function drawTrail() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (points.length < 2) {
+                requestAnimationFrame(drawTrail);
+                return;
+            }
+
+            // Draw the trail
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+
+            for (let i = 1; i < points.length; i++) {
+                const point = points[i];
+                const prevPoint = points[i - 1];
+
+                // Get color based on position
+                ctx.strokeStyle = getContrastColor(point.x, point.y);
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                // Calculate opacity based on position in trail
+                const opacity = i / points.length;
+                ctx.globalAlpha = opacity * 0.8;
+
+                ctx.beginPath();
+                ctx.moveTo(prevPoint.x, prevPoint.y);
+                ctx.lineTo(point.x, point.y);
+                ctx.stroke();
+            }
+
+            // Draw cursor dot
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = getContrastColor(mouseX, mouseY);
+            ctx.beginPath();
+            ctx.arc(mouseX, mouseY, 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            requestAnimationFrame(drawTrail);
+        }
+
+        drawTrail();
+
+        // Hide trail on touch devices
+        if ('ontouchstart' in window) {
+            canvas.style.display = 'none';
+        }
+    </script>
+ </body>
+ </html>

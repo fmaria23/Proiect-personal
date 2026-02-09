@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rucs Personal Trainer - Maria Ferdean</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #FDF8F3;
+            color: #333;
+            font-family: Georgia, serif;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            letter-spacing: 0.1px;
+            overflow-x: hidden;
+        }
+
+        .site-header {
+            background: #6B2D5C;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 32px;
+            box-shadow: 0 2px 10px rgba(107, 45, 92, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: white;
+            text-decoration: none;
+            font-family: "Playfair Display", Georgia, serif;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: "Playfair Display", Georgia, serif;
+            letter-spacing: 0.4px;
+        }
+
+        .main-nav a:hover {
+            color: #FDF8F3;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #6B2D5C;
+            text-decoration: none;
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #8B3D7C;
+            transform: translateX(-5px);
+        }
+
+        .project-header {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(107, 45, 92, 0.15);
+            border: 1px solid #E8E4DC;
+            margin-bottom: 40px;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            font-family: "Playfair Display", Georgia, serif;
+            color: #6B2D5C;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .project-header p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .project-header p:first-of-type::first-letter {
+            font-size: 3rem;
+            font-family: "Playfair Display", Georgia, serif;
+            color: #6B2D5C;
+            float: left;
+            margin-right: 10px;
+            line-height: 1;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(107, 45, 92, 0.1);
+            border: 1px solid #E8E4DC;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 45, 92, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #6B2D5C;
+            color: white;
+            font-size: 0.9rem;
+            font-family: "Playfair Display", Georgia, serif;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .project-header {
+                padding: 30px 20px;
+            }
+            
+            .project-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="MariaFerdean.html" class="logo-text">Maria Ferdean</a>
+            <nav class="main-nav">
+                <a href="MariaFerdean.html">Home</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="MariaFerdean.html" class="back-link">← Back to Home</a>
+        
+        <div class="project-header">
+            <h1>Rucs Personal Trainer</h1>
+            <p>Rucs is a client with whom I have had the longest collaboration; I have seen her growing and developing very nicely. With Rucs, we started the collaboration by doing some photo sessions inside the gym, but other more complex projects that are under discussion will follow.</p>
+            <p>Rucs is a fitness trainer at 18Gym in Cluj-Napoca and a nutritionist, who started this journey in 2019. She has gone through many challenges to get here; she is a strong, courageous, and motivated woman determined to reach her goals. To be honest, because of her, I started doing sports and began paying more attention to food, all of this just by having a few conversations with her to understand the message she wants to convey on her social media page.</p>
+            <p>She also told me that during school she skipped almost all her PE classes, ironically.</p>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="poza ruxi/RucsPersonalTrainer (1).jpg" alt="Rucs Personal Trainer 1">
+            </div>
+            <div class="gallery-item">
+                <img src="poza ruxi/RucsPersonalTrainer (2).jpg" alt="Rucs Personal Trainer 2">
+            </div>
+            <div class="gallery-item">
+                <img src="poza ruxi/RucsPersonalTrainer (3).jpg" alt="Rucs Personal Trainer 3">
+            </div>
+            <div class="gallery-item">
+                <img src="poza ruxi/RucsPersonalTrainer (4).jpg" alt="Rucs Personal Trainer 4">
+            </div>
+            <div class="gallery-item">
+                <img src="poza ruxi/RucsPersonalTrainer (5).jpg" alt="Rucs Personal Trainer 5">
+            </div>
+            <div class="gallery-item">
+                <img src="poza ruxi/RucsPersonalTrainer (6).jpg" alt="Rucs Personal Trainer 6">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Maria Ferdean. Crafted with passion and creativity.</p>
+    </footer>
+</body>
+</html>

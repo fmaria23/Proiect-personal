@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Runners Club - Maria Ferdean</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #FDF8F3;
+            color: #333;
+            font-family: Georgia, serif;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            letter-spacing: 0.1px;
+            overflow-x: hidden;
+        }
+
+        .site-header {
+            background: #6B2D5C;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 32px;
+            box-shadow: 0 2px 10px rgba(107, 45, 92, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .logo-text {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: white;
+            text-decoration: none;
+            font-family: "Playfair Display", Georgia, serif;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: "Playfair Display", Georgia, serif;
+            letter-spacing: 0.4px;
+        }
+
+        .main-nav a:hover {
+            color: #FDF8F3;
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #6B2D5C;
+            text-decoration: none;
+            font-family: "Playfair Display", Georgia, serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #8B3D7C;
+            transform: translateX(-5px);
+        }
+
+        article {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(107, 45, 92, 0.15);
+            border: 1px solid #E8E4DC;
+        }
+
+        article h1 {
+            font-size: 2.5rem;
+            font-family: "Playfair Display", Georgia, serif;
+            color: #6B2D5C;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        article p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        article p:first-of-type::first-letter {
+            font-size: 3rem;
+            font-family: "Playfair Display", Georgia, serif;
+            color: #6B2D5C;
+            float: left;
+            margin-right: 10px;
+            line-height: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #6B2D5C;
+            color: white;
+            font-size: 0.9rem;
+            font-family: "Playfair Display", Georgia, serif;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            article {
+                padding: 30px 20px;
+            }
+            
+            article h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="MariaFerdean.html" class="logo-text">Maria Ferdean</a>
+            <nav class="main-nav">
+                <a href="MariaFerdean.html">Home</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="MariaFerdean.html" class="back-link">← Back to Home</a>
+        
+        <article>
+            <h1>Runners Club</h1>
+            <p>I started collaborating at the beginning of February 2026. I attend various sporting events organized by this group, where I assist with filming and photography for different social media posts.</p>
+            <p>Runners Club is a local sports and running organization based in Cluj‑Napoca that promotes running as a mass‑participation sport and a healthy lifestyle. It was originally founded in 2010 by a group of runners and operates as a running association that organizes regular group runs and major running events, including well‑known races such as the Wizz Air Cluj‑Napoca Marathon, Crosul Companiilor, Crosul de Noapte and other running competitions and community runs throughout the year. The club's activities bring together runners of all ages and levels to train, run socially, and participate in events, helping to build a strong running community in Cluj.</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Maria Ferdean. Crafted with passion and creativity.</p>
+    </footer>
+</body>
+</html>
