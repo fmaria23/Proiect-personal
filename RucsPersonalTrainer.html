@@ -229,5 +229,118 @@
     <footer>
         <p>&copy; 2025 Maria Ferdean. Crafted with passion and creativity.</p>
     </footer>
+
+    <script>
+        // Pen-like cursor trail effect
+        const canvas = document.createElement('canvas');
+        canvas.id = 'cursor-trail-canvas';
+        canvas.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; mix-blend-mode: difference;';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        let points = [];
+        const maxPoints = 30; // Approximately 10cm trail (30 points)
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            points.push({ x: mouseX, y: mouseY, time: Date.now() });
+
+            // Keep only recent points (approximately 500ms trail for smooth effect)
+            const now = Date.now();
+            points = points.filter(p => now - p.time < 500);
+
+            // Limit number of points
+            if (points.length > maxPoints) {
+                points = points.slice(-maxPoints);
+            }
+        });
+
+        function getContrastColor(x, y) {
+            // Get the background color at the current position
+            const elements = document.elementsFromPoint(x, y);
+
+            for (const element of elements) {
+                const style = window.getComputedStyle(element);
+                const bgColor = style.backgroundColor;
+
+                // Parse RGB values
+                const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+                if (match) {
+                    const r = parseInt(match[1]);
+                    const g = parseInt(match[2]);
+                    const b = parseInt(match[3]);
+
+                    // Calculate brightness
+                    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+                    // Return white for dark backgrounds, black for light backgrounds
+                    return brightness < 128 ? '#FFFFFF' : '#6B2D5C';
+                }
+            }
+
+            // Default to burgundy
+            return '#6B2D5C';
+        }
+
+        function drawTrail() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (points.length < 2) {
+                requestAnimationFrame(drawTrail);
+                return;
+            }
+
+            // Draw the trail
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+
+            for (let i = 1; i < points.length; i++) {
+                const point = points[i];
+                const prevPoint = points[i - 1];
+
+                // Get color based on position
+                ctx.strokeStyle = getContrastColor(point.x, point.y);
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                // Calculate opacity based on position in trail
+                const opacity = i / points.length;
+                ctx.globalAlpha = opacity * 0.8;
+
+                ctx.beginPath();
+                ctx.moveTo(prevPoint.x, prevPoint.y);
+                ctx.lineTo(point.x, point.y);
+                ctx.stroke();
+            }
+
+            // Draw cursor dot
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = getContrastColor(mouseX, mouseY);
+            ctx.beginPath();
+            ctx.arc(mouseX, mouseY, 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            requestAnimationFrame(drawTrail);
+        }
+
+        drawTrail();
+
+        // Hide trail on touch devices
+        if ('ontouchstart' in window) {
+            canvas.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
