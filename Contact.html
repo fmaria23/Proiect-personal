@@ -280,6 +280,40 @@
         margin-bottom: 30px;
     }
 
+    .message-alert {
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        display: none;
+        font-family: Georgia, serif;
+        animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .message-alert.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        display: block;
+    }
+
+    .message-alert.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        display: block;
+    }
+
     .form-group {
         margin-bottom: 25px;
     }
@@ -410,7 +444,8 @@
         <section class="form-section">
             <div class="form-card">
                 <h2>Send a Message</h2>
-                <form action="ThankYou.html" method="GET">
+                <div id="message-alert" class="message-alert"></div>
+                <form id="contact-form">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -421,13 +456,13 @@
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message</label>
                         <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn" id="submit-btn">Send Message</button>
                 </form>
             </div>
         </section>
@@ -437,7 +472,67 @@
         <p>&copy; 2025 Maria Ferdean. Crafted with passion and creativity.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
     <script>
+        // Initialize EmailJS
+        // Replace 'YOUR_USER_ID' with your actual EmailJS User ID
+        emailjs.init('YOUR_USER_ID');
+
+        // Get form and alert elements
+        const form = document.getElementById('contact-form');
+        const messageAlert = document.getElementById('message-alert');
+        const submitBtn = document.getElementById('submit-btn');
+
+        // Form submission handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Disable submit button while sending
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Get form values
+            const templateParams = {
+                to_email: 'ferdean.maria@gmail.com', // Replace with your email
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Send email using EmailJS
+            // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    // Success message
+                    messageAlert.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+                    messageAlert.className = 'message-alert success';
+                    messageAlert.style.display = 'block';
+
+                    // Reset form
+                    form.reset();
+
+                    // Hide message after 5 seconds
+                    setTimeout(function() {
+                        messageAlert.style.display = 'none';
+                    }, 5000);
+
+                    console.log('Email sent successfully:', response);
+                }, function(error) {
+                    // Error message
+                    messageAlert.textContent = '✗ Error sending message. Please try again or contact me directly.';
+                    messageAlert.className = 'message-alert error';
+                    messageAlert.style.display = 'block';
+
+                    console.error('Error sending email:', error);
+                })
+                .finally(function() {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
+        });
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.site-header');
@@ -456,7 +551,7 @@
 
         const ctx = canvas.getContext('2d');
         let points = [];
-        const maxPoints = 30; // Approximately 10cm trail (30 points)
+        const maxPoints = 30;
         let mouseX = 0;
         let mouseY = 0;
 
@@ -473,40 +568,33 @@
             mouseY = e.clientY;
             points.push({ x: mouseX, y: mouseY, time: Date.now() });
 
-            // Keep only recent points (approximately 500ms trail for smooth effect)
             const now = Date.now();
             points = points.filter(p => now - p.time < 500);
 
-            // Limit number of points
             if (points.length > maxPoints) {
                 points = points.slice(-maxPoints);
             }
         });
 
         function getContrastColor(x, y) {
-            // Get the background color at the current position
             const elements = document.elementsFromPoint(x, y);
 
             for (const element of elements) {
                 const style = window.getComputedStyle(element);
                 const bgColor = style.backgroundColor;
 
-                // Parse RGB values
                 const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
                 if (match) {
                     const r = parseInt(match[1]);
                     const g = parseInt(match[2]);
                     const b = parseInt(match[3]);
 
-                    // Calculate brightness
                     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-                    // Return white for dark backgrounds, black for light backgrounds
                     return brightness < 128 ? '#FFFFFF' : '#6B2D5C';
                 }
             }
 
-            // Default to burgundy
             return '#6B2D5C';
         }
 
@@ -518,7 +606,6 @@
                 return;
             }
 
-            // Draw the trail
             ctx.beginPath();
             ctx.moveTo(points[0].x, points[0].y);
 
@@ -526,13 +613,11 @@
                 const point = points[i];
                 const prevPoint = points[i - 1];
 
-                // Get color based on position
                 ctx.strokeStyle = getContrastColor(point.x, point.y);
                 ctx.lineWidth = 3;
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
 
-                // Calculate opacity based on position in trail
                 const opacity = i / points.length;
                 ctx.globalAlpha = opacity * 0.8;
 
@@ -542,7 +627,6 @@
                 ctx.stroke();
             }
 
-            // Draw cursor dot
             ctx.globalAlpha = 1;
             ctx.fillStyle = getContrastColor(mouseX, mouseY);
             ctx.beginPath();
@@ -554,7 +638,6 @@
 
         drawTrail();
 
-        // Hide trail on touch devices
         if ('ontouchstart' in window) {
             canvas.style.display = 'none';
         }
