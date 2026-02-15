@@ -601,6 +601,172 @@
             padding: 60px 20px;
         }
     }
+
+    /* Dark Mode */
+    :root {
+        --bg-primary: #FDF8F3;
+        --bg-secondary: white;
+        --text-primary: #333;
+        --text-secondary: #555;
+        --accent-primary: #6B2D5C;
+        --accent-secondary: #8B3D7C;
+    }
+
+    html.dark-mode {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2d2d2d;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --accent-primary: #d4a5c4;
+        --accent-secondary: #e0b5d0;
+    }
+
+    .dark-mode body {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    .dark-mode .site-header {
+        background: var(--bg-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dark-mode .project-card,
+    .dark-mode .project-header,
+    .dark-mode article {
+        background: var(--bg-secondary);
+    }
+
+    .dark-mode .hero {
+        background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        font-family: "Playfair Display", Georgia, serif;
+        margin-left: 20px;
+    }
+
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--accent-primary);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(107, 45, 92, 0.3);
+    }
+
+    .back-to-top.show {
+        display: flex;
+    }
+
+    .back-to-top:hover {
+        background: var(--accent-secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(107, 45, 92, 0.4);
+    }
+
+    /* Project Filter */
+    .project-filters {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 10px 20px;
+        border: 2px solid var(--accent-primary);
+        background: transparent;
+        color: var(--accent-primary);
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: "Playfair Display", Georgia, serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: var(--accent-primary);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .project-card {
+        display: none;
+    }
+
+    .project-card.show {
+        display: block;
+        animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Keyboard Navigation Indicator */
+    .project-card.focused {
+        box-shadow: 0 0 0 3px var(--accent-primary);
+    }
     </style>
 </head>
 <body>
@@ -615,6 +781,7 @@
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="Contact.html">Contact</a>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
         </nav>
         </div>
     </header>
@@ -949,8 +1116,15 @@
         <!-- Projects Section -->
         <section class="section" id="projects">
             <h2 class="section-title">Featured Projects</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="Photography">Photography</button>
+                <button class="filter-btn" data-filter="Design">Design</button>
+                <button class="filter-btn" data-filter="Social Media">Social Media</button>
+                <button class="filter-btn" data-filter="Video">Video</button>
+            </div>
             <div class="projects-grid">
-                <article class="project-card">
+                <article class="project-card show" data-category="Photography Videography Sports">
                     <a href="RunnersClub.html" class="project-image">🏃</a>
                     <div class="project-content">
                         <h4>Runners Club</h4>
@@ -963,7 +1137,7 @@
                         <a href="RunnersClub.html" class="project-link">Read More</a>
                     </div>
                 </article>
-                <article class="project-card">
+                <article class="project-card show" data-category="Social Media Marketing Design">
                     <a href="AdvertisementPoster.html" class="project-image">📱</a>
                     <div class="project-content">
                         <h4>Advertisement Poster</h4>
@@ -976,7 +1150,7 @@
                         <a href="AdvertisementPoster.html" class="project-link">View Project</a>
                     </div>
                 </article>
-                <article class="project-card">
+                <article class="project-card show" data-category="Photography Fitness Social Media">
                     <a href="RucsPersonalTrainer.html" class="project-image">💪</a>
                     <div class="project-content">
                         <h4>Rucs Personal Trainer</h4>
@@ -989,7 +1163,7 @@
                         <a href="RucsPersonalTrainer.html" class="project-link">View Project</a>
                     </div>
                 </article>
-                <article class="project-card">
+                <article class="project-card show" data-category="Social Media Video Content">
                     <a href="KiteCowork.html" class="project-image">🪁</a>
                     <div class="project-content">
                         <h4>Kite Cowork</h4>
@@ -1021,15 +1195,67 @@
         <p>&copy; 2025 Maria Ferdean. Crafted with passion and creativity.</p>
     </footer>
 
+    <button class="back-to-top" id="back-to-top">↑</button>
+
     <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const prefersDark = localStorage.getItem('dark-mode') === 'true';
+        
+        if (prefersDark) {
+            htmlElement.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark-mode');
+            const isDark = htmlElement.classList.contains('dark-mode');
+            localStorage.setItem('dark-mode', isDark);
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        });
+
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Scroll Animations
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe timeline items and section content
+        document.querySelectorAll('.timeline-item, .skill-card, .project-card, .about-card').forEach(element => {
+            element.classList.add('fade-in');
+            observer.observe(element);
         });
 
         // Header scroll effect
@@ -1042,18 +1268,60 @@
             }
         });
 
-        // Animate timeline items on scroll
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // Project Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        let currentFilter = 'all';
+        let currentProjectIndex = 0;
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.getAttribute('data-filter');
+                filterProjects();
+                currentProjectIndex = 0;
+            });
+        });
+
+        function filterProjects() {
+            projectCards.forEach((card, index) => {
+                if (currentFilter === 'all' || card.getAttribute('data-category').includes(currentFilter)) {
+                    card.classList.add('show');
+                    card.classList.remove('focused');
+                } else {
+                    card.classList.remove('show', 'focused');
                 }
             });
-        }, { threshold: 0.2 });
+        }
 
-        document.querySelectorAll('.timeline-item').forEach(item => {
-            timelineObserver.observe(item);
+        // Keyboard Navigation (Arrow Keys)
+        document.addEventListener('keydown', (e) => {
+            const visibleCards = Array.from(projectCards).filter(card => card.classList.contains('show'));
+            
+            if (visibleCards.length === 0) return;
+
+            if (e.key === 'ArrowRight') {
+                currentProjectIndex = (currentProjectIndex + 1) % visibleCards.length;
+                highlightProject(visibleCards);
+                e.preventDefault();
+            } else if (e.key === 'ArrowLeft') {
+                currentProjectIndex = (currentProjectIndex - 1 + visibleCards.length) % visibleCards.length;
+                highlightProject(visibleCards);
+                e.preventDefault();
+            }
         });
+
+        function highlightProject(visibleCards) {
+            projectCards.forEach(card => card.classList.remove('focused'));
+            if (visibleCards[currentProjectIndex]) {
+                visibleCards[currentProjectIndex].classList.add('focused');
+                visibleCards[currentProjectIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Initialize projects
+        filterProjects();
 
         // Pen-like cursor trail effect
         const canvas = document.createElement('canvas');
@@ -1063,7 +1331,7 @@
 
         const ctx = canvas.getContext('2d');
         let points = [];
-        const maxPoints = 30; // Approximately 10cm trail (30 points)
+        const maxPoints = 30;
         let mouseX = 0;
         let mouseY = 0;
 
@@ -1080,40 +1348,33 @@
             mouseY = e.clientY;
             points.push({ x: mouseX, y: mouseY, time: Date.now() });
 
-            // Keep only recent points (approximately 500ms trail for smooth effect)
             const now = Date.now();
             points = points.filter(p => now - p.time < 500);
 
-            // Limit number of points
             if (points.length > maxPoints) {
                 points = points.slice(-maxPoints);
             }
         });
 
         function getContrastColor(x, y) {
-            // Get the background color at the current position
             const elements = document.elementsFromPoint(x, y);
 
             for (const element of elements) {
                 const style = window.getComputedStyle(element);
                 const bgColor = style.backgroundColor;
 
-                // Parse RGB values
                 const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
                 if (match) {
                     const r = parseInt(match[1]);
                     const g = parseInt(match[2]);
                     const b = parseInt(match[3]);
 
-                    // Calculate brightness
                     const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-                    // Return white for dark backgrounds, black for light backgrounds
                     return brightness < 128 ? '#FFFFFF' : '#6B2D5C';
                 }
             }
 
-            // Default to burgundy
             return '#6B2D5C';
         }
 
@@ -1125,7 +1386,6 @@
                 return;
             }
 
-            // Draw the trail
             ctx.beginPath();
             ctx.moveTo(points[0].x, points[0].y);
 
@@ -1133,13 +1393,11 @@
                 const point = points[i];
                 const prevPoint = points[i - 1];
 
-                // Get color based on position
                 ctx.strokeStyle = getContrastColor(point.x, point.y);
                 ctx.lineWidth = 3;
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
 
-                // Calculate opacity based on position in trail
                 const opacity = i / points.length;
                 ctx.globalAlpha = opacity * 0.8;
 
@@ -1149,7 +1407,6 @@
                 ctx.stroke();
             }
 
-            // Draw cursor dot
             ctx.globalAlpha = 1;
             ctx.fillStyle = getContrastColor(mouseX, mouseY);
             ctx.beginPath();
@@ -1161,7 +1418,6 @@
 
         drawTrail();
 
-        // Hide trail on touch devices
         if ('ontouchstart' in window) {
             canvas.style.display = 'none';
         }
